@@ -1,0 +1,106 @@
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+
+.file-input {
+  display: inside;
+}
+
+.btn {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 5px; /* Rounded corners */
+  width: 100%; /* Full width */
+}
+
+/* You can also add specific styling for different buttons if needed */
+.connect-btn {
+  background-color: blue; /* Or any other color */
+}
+
+.back-btn {
+  background-color: red; /* Or any other color */
+}
+
+.warning {
+  background-color: #ffeeee;
+  border: 1px solid #ffcccc;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  color: #ff0000;
+  font-weight: bold;
+  font-size:x-small;
+}
+
+.start {
+  background-color: #deffed;
+  border: 1px solid #a6ffda;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  color: #005529;
+  font-weight: bold;
+  font-size:x-small;
+}
+
+.summary-info {
+  background-color: #bcefff;
+  border: 1px solid #95e1ff;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  color: #003255;
+  font-weight: bold;
+  font-size:x-small;
+}
+
+
+
+.summary-section, .deploy-section {
+  margin-top: 20px;
+}
+
+.container {
+  background-color: #ffffff; 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px #0000001a;
+  width: 300px; /* Fixed width */
+  height: 500px; /* Fixed height */
+  overflow-y: auto; /* To enable scrolling if the content exceeds the container height */
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Styling for each section, ensuring they are consistent and responsive */
+.upload-section,
+.summary-section,
+.deploy-section {
+  text-align: center;
+}
+
+.custom-file-upload {
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 10px;
+}
