@@ -70,6 +70,16 @@
   font-size:x-small;
 }
 
+.validation-section {
+  background-color: #c9ccfc;
+  border: 1px solid #eab4f8;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  color: #3a0055;
+  font-weight: bold;
+  font-size:x-small;
+}
 
 
 .summary-section, .deploy-section {
@@ -95,7 +105,8 @@
 /* Styling for each section, ensuring they are consistent and responsive */
 .upload-section,
 .summary-section,
-.deploy-section {
+.deploy-section
+.validation-section {
   text-align: center;
 }
 
