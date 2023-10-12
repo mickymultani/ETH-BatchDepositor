@@ -30,6 +30,14 @@ function App() {
     return validationResult;
 };
 
+  const allKeysValid = (keyValidation) => {
+  return keyValidation.every(result => 
+      result.pubkey.valid && 
+      result.withdrawal_credentials.valid && 
+      result.signature.valid
+  );
+};
+
 
   const onFileUpload = (e) => {
     const file = e.target.files[0];
@@ -137,32 +145,41 @@ function App() {
         </div>
         )}
 
-        {currentStep === 2 && summary && (
-          <div className="summary-section">
-            <div className="title">Step 2: Review Details</div>
-            <div className="validation-section">
-              Key Validation Results:
-              {keyValidation && keyValidation.map((result, index) => (
-               <div key={index} className="key-validation-result">
-                Node {index + 1}: 
-                Pubkey Size: {result.pubkey.size} bytes ({result.pubkey.valid ? 'Valid' : 'Invalid'}),
-                Withdrawal Credentials Size: {result.withdrawal_credentials.size} bytes ({result.withdrawal_credentials.valid ? 'Valid' : 'Invalid'}),
-                Signature Size: {result.signature.size} bytes ({result.signature.valid ? 'Valid' : 'Invalid'})
-                 </div>
-                ))}
+{currentStep === 2 && summary && (
+    <div className="summary-section">
+        <div className="title">Step 2: Review Details</div>
 
-            </div>
-            <div className="summary-info">
-              <p>Nodes to be deployed: {summary.nodesAmount}</p>
-              <p>Amount to be staked: {summary.totalAmount} ETH</p>
-              <p>Network: {summary.network}</p>
-              <p>Abyss Contract: {summary.contractAddress}</p>
-            </div>
-            <button onClick={connectWalletAndDeploy}>Connect Wallet</button>
-            {signer && <button onClick={proceedToDeploy}>Proceed to Deploy</button>}
-            <button onClick={onPrev}>Back</button>
-          </div>
+        <div className="validation-section">
+            Key Validation Results:
+            {keyValidation && keyValidation.map((result, index) => (
+                <div key={index} className="key-validation-result">
+                    Node {index + 1}: 
+                    Pubkey Size: {result.pubkey.size} bytes ({result.pubkey.valid ? 'Valid' : 'Invalid'}),
+                    Withdrawal Credentials Size: {result.withdrawal_credentials.size} bytes ({result.withdrawal_credentials.valid ? 'Valid' : 'Invalid'}),
+                    Signature Size: {result.signature.size} bytes ({result.signature.valid ? 'Valid' : 'Invalid'})
+                </div>
+            ))}
+        </div>
+
+        <div className="summary-info">
+            <p>Nodes to be deployed: {summary.nodesAmount}</p>
+            <p>Amount to be staked: {summary.totalAmount} ETH</p>
+            <p>Network: {summary.network}</p>
+            <p>Abyss Contract: {summary.contractAddress}</p>
+        </div>
+
+        {allKeysValid(keyValidation) ? (
+            <>
+                <button onClick={connectWalletAndDeploy} className="btn connect-btn">Connect Wallet</button>
+                {signer && <button onClick={proceedToDeploy} className="btn proceed-btn">Proceed to Deploy</button>}
+            </>
+        ) : (
+            <p className="key-validation-warning">Some keys are invalid. Please check the validation results and upload a correct file.</p>
         )}
+
+        <button onClick={onPrev} className="btn back-btn">Back</button>
+    </div>
+)}
 
         {currentStep === 3 && signer && (
           <div className="deploy-section">
